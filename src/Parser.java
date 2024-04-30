@@ -89,7 +89,7 @@ public class Parser {
         //Checks if the value is a character or a digit or a boolean value
         if(input.charAt(index) == '\''){
             parseCharacter();
-        }else if(Character.isDigit(input.charAt(index)){
+        }else if(Character.isDigit(input.charAt(index))){
             parseDigit();
         }else if(Character.isLetter(input.charAt(index))){
             parseBoolean();
