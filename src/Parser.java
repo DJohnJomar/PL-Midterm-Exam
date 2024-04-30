@@ -115,7 +115,7 @@ public class Parser {
             checkForToken(temp);
             temp = "";//reset temp
             //Check for character within quotation marks
-            if(Character.isLetter(input.charAt(index))){
+            if(input.charAt(index) != '\''){
                 temp += input.charAt(index);
                 index++;
                 addCharacter(temp);
@@ -126,12 +126,15 @@ public class Parser {
                     checkForToken(temp);
                     temp = "";//reset temp
                 }else{
+                    result.clear();
                     throw new SyntaxErrorException("Expected a single quotation (') mark at index " + index);
                 }
             }else{
+                result.clear();
                 throw new SyntaxErrorException("Expected a character at index " + index);
             }
         }else{
+            result.clear();
             throw new SyntaxErrorException("Expected a single quotation (') mark at index " + index);
         }
     }
