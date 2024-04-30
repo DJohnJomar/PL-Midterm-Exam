@@ -19,7 +19,10 @@ public class Parser {
     private ArrayList<String> result = new ArrayList<String>();
     private int index;
     private String input;
-    private boolean hasDataType;
+
+    public Parser(){
+        setupHashMap();
+    }
 
     public void parseStatement(String input) throws SyntaxErrorException{
         this.input = input;
@@ -55,10 +58,6 @@ public class Parser {
 
     public void parseDataType() throws SyntaxErrorException{
         String temp = "";
-        //If the first detected character is not a "charater", input is invalid
-        if(!Character.isLetter(input.charAt(index))){
-            throw new SyntaxErrorException("Expected data type at index " + index);
-        }
 
         //Stores characters into temp to be checked
         while(index < input.length() && Character.isLetter(input.charAt(index))){
@@ -67,6 +66,8 @@ public class Parser {
         }
         //If the string at the position of data type does not match with the available data types, input is invalid
         if(!checkForToken(temp)){
+            System.out.println(checkForToken(temp));
+            System.out.println("\""+temp+"\"");
             result.clear();
             throw new SyntaxErrorException("Expected data type at index " + index);
         }
