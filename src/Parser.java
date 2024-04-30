@@ -19,6 +19,8 @@ public class Parser {
     private ArrayList<String> result = new ArrayList<String>();
     private int index;
     private String input;
+    private String dataType;
+    private String valueDataType;
 
     public Parser(){
         setupHashMap();
@@ -27,6 +29,8 @@ public class Parser {
     public void parseStatement(String input) throws SyntaxErrorException{
         this.input = input;
         index = 0;
+        dataType ="";
+        valueDataType ="";
         String temp ="";
         parseDataType();
         parseIdentifier();
@@ -54,6 +58,8 @@ public class Parser {
             throw new SyntaxErrorException("Expected '=' or ';' at index " + index);
         }
 
+        checkDataTypeValidity();
+
         display();
         result.clear();
 
@@ -74,6 +80,7 @@ public class Parser {
             result.clear();
             throw new SyntaxErrorException("Expected data type at index " + index);
         }
+        this.dataType = temp;
         skipForWhiteSpaces();
     }
 
@@ -120,6 +127,7 @@ public class Parser {
                 index++;
                 addCharacter(temp);
                 temp = "";//reset temp
+                this.valueDataType = "Character";
                 if(input.charAt(index) == '\''){
                     temp += input.charAt(index);
                     index++;
@@ -147,6 +155,7 @@ public class Parser {
             index++;
         }
         addDigit(temp);
+        this.valueDataType = identifyNumericType(temp);
         skipForWhiteSpaces();
     }
 
@@ -166,6 +175,7 @@ public class Parser {
             result.clear();
             throw new SyntaxErrorException("Expected a boolean value of 'True' or 'False' at index "+ index);
         }
+        this.valueDataType = "Boolean";
     }
 
     // Checks the input string if it matches one of the keys in the hashmap of
@@ -181,6 +191,51 @@ public class Parser {
         }
         return tokenMatch;
     }
+
+    public void checkDataTypeValidity() throws SyntaxErrorException {
+        if (valueDataType.isBlank()) {
+            return;
+        }
+        System.out.println("Data type: " + dataType);
+        System.out.println("Value Data type: " + valueDataType);
+        switch (dataType) {
+            case "boolean":
+                if (!valueDataType.equals("Boolean")) 
+                    typeMisMatch();
+                break;
+            case "char":
+                if (!valueDataType.equals("Character")) 
+                    typeMisMatch();
+                break;
+            case "byte":
+                if (!valueDataType.equals("Byte Literal")) 
+                    typeMisMatch();
+                break;
+            case "short":
+                if (!valueDataType.equals("Short Literal")) 
+                    typeMisMatch();
+                break;
+            case "int":
+                if (!valueDataType.equals("Integer Literal")) 
+                    typeMisMatch();
+                break;
+            case "long":
+                if (!valueDataType.equals("Long Literal")) 
+                    typeMisMatch();
+                break;
+            case "float":
+                if (!valueDataType.equals("Float Literal")) 
+                    typeMisMatch();
+                break;
+            case "double":
+                if (!valueDataType.equals("Double Literal")) 
+                    typeMisMatch();
+                break;
+        }
+        dataType = "";
+        valueDataType = "";
+    }
+    
 
     public void addIdentifier(String identifier){
         result.add(identifier + " : Identifier");
@@ -198,6 +253,14 @@ public class Parser {
             throw new SyntaxErrorException("Expected a valid digit at index "+ index);//An exception is thrown if the digit provided is not a valid numeric type
         }
         result.add(digit + " : " + identifyNumericType(digit));//Digit is added to result if valid
+        
+    }
+
+    public void typeMisMatch() throws SyntaxErrorException{
+        result.clear();
+        dataType ="";
+        valueDataType="";
+        throw new SyntaxErrorException("Data type mis-match detected!");
     }
 
 

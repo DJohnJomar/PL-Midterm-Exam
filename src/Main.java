@@ -11,7 +11,7 @@ public class Main {
         
         while (true) {
             try {
-                System.out.print("\nEnter your Java Variable Initialization/Declaration: ");
+                System.out.print("\nEnter your Java Variable Initialization/Declaration ");
                 input = reader.readLine();
                 parser.parseStatement(input);
                 
