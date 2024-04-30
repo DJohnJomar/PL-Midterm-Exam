@@ -48,6 +48,9 @@ public class Parser {
             throw new SyntaxErrorException("Expected '=' or ';' at index " + index);
         }
 
+        display();
+        result.clear();
+
     }
 
     public void parseDataType() throws SyntaxErrorException{
@@ -236,6 +239,13 @@ public class Parser {
         map.put("=", "Equal Sign");
         map.put("'", "Single Quotation");
         map.put(";", "Semicolon");
+    }
+
+    public void display(){
+        System.out.println("\n----- Lexeme : Token Pairs -----\n");
+            for (String str : result) {
+                System.out.println(str);
+            }
     }
 
     
