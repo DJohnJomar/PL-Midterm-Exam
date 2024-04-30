@@ -26,6 +26,7 @@ public class Parser {
 
     public void parseStatement(String input) throws SyntaxErrorException{
         this.input = input;
+        index = 0;
         String temp ="";
         parseDataType();
         parseIdentifier();
