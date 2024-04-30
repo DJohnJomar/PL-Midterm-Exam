@@ -39,6 +39,7 @@ public class Parser {
             temp += input.charAt(index);
             index++;
             checkForToken(temp);
+            temp ="";//reset temp
             skipForWhiteSpaces();
             parseValue();
             if(input.charAt(index) == ';'){
