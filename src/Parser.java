@@ -38,8 +38,10 @@ public class Parser {
             skipForWhiteSpaces();
             parseValue();
             if(input.charAt(index) == ';'){
-                checkForToken(input);
+                temp +=input.charAt(index);
+                checkForToken(temp);
             }else{
+                result.clear();
                 throw new SyntaxErrorException("Expected a semicolon at index " + index);
             }
 
@@ -80,7 +82,8 @@ public class Parser {
         //Stores characters to temp to be stored
         while(index < input.length() && Character.isLetter(input.charAt(index)) || input.charAt(index) == '_'){
             //If character is not a letter or an underscore, input is invalid
-            if(!Character.isLetter(input.charAt(index)) || input.charAt(index) != '_' ){
+            if(!(Character.isLetter(input.charAt(index)) || input.charAt(index) == '_')){
+                System.out.println("\""+temp+"\"");
                 result.clear();
                 throw new SyntaxErrorException("Expected an identifier at index " + index);
             }
@@ -157,6 +160,7 @@ public class Parser {
         }else if(temp.equals("False")){
             addBoolean(temp);
         }else{
+            result.clear();
             throw new SyntaxErrorException("Expected a boolean value of 'True' or 'False' at index "+ index);
         }
     }
