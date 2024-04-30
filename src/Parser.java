@@ -320,6 +320,9 @@ public class Parser {
                 System.out.println(str);
             }
     }
+    public void clearResult(){
+        result.clear();
+    }
 
     
 }

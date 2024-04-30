@@ -18,6 +18,7 @@ public class Main {
             } catch (Exception e) {
                 System.out.println("Invalid Input");
                 System.out.println(e);
+                parser.clearResult();//Result clearing functions when unexpected errors arise
             }
         }
     }
