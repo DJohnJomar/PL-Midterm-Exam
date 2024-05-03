@@ -168,9 +168,9 @@ public class Parser {
             index++;
         }
         //Checks if temp is "True" or "False", else it is invalid
-        if(temp.equals("True")){
+        if(temp.equals("true")){
             addBoolean(temp);
-        }else if(temp.equals("False")){
+        }else if(temp.equals("false")){
             addBoolean(temp);
         }else{
             result.clear();
