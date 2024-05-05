@@ -9,6 +9,7 @@ public class Parser {
      * <statement> =:: <variable declaration> | <variable initialization>
      * <Variable Declaration> =:: <data type> <identifier>;
      * <Variable Initialization> =:: <data type> <identifier> = <value>;
+     * <data type> =:: char | boolean | int | byte | short | long | float | double
      * <value> =:: <character> | <digit> | <boolean>
      * <character> =:: 'a' | 'b' | ... |'Z'
      * <digit> =:: "0" | ... | 9
