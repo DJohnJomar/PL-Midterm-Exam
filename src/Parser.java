@@ -197,8 +197,6 @@ public class Parser {
         if (valueDataType.isBlank()) {
             return;
         }
-        System.out.println("Data type: " + dataType);
-        System.out.println("Value Data type: " + valueDataType);
         switch (dataType) {
             case "boolean":
                 if (!valueDataType.equals("Boolean")) 

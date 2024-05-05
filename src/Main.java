@@ -1,3 +1,6 @@
+//A java program that parses a simple java primitive data type initialization/declaration
+//May 5, 2024
+//3CS-A || Dimaunahan, Meneses
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
