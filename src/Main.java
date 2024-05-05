@@ -14,12 +14,12 @@ public class Main {
         
         while (true) {
             try {
-                System.out.print("\nEnter your Java Variable Initialization/Declaration: ");
+                System.out.print("\nEnter your Java Primitive Variable Initialization/Declaration: ");
                 input = reader.readLine();
                 parser.parseStatement(input);
                 
             } catch (Exception e) {
-                System.out.println("Invalid Input");
+                System.out.println("----------Invalid Input!----------");
                 System.out.println(e);
                 parser.clearResult();//Result clearing functions when unexpected errors arise
             }

@@ -61,6 +61,7 @@ public class Parser {
 
         checkDataTypeValidity();
 
+        System.out.println("----------Valid Input!----------");
         display();
         result.clear();
 
