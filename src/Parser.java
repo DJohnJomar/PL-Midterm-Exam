@@ -77,8 +77,6 @@ public class Parser {
         }
         //If the string at the position of data type does not match with the available data types, input is invalid
         if(!checkForToken(temp)){
-            System.out.println(checkForToken(temp));
-            System.out.println("\""+temp+"\"");
             result.clear();
             throw new SyntaxErrorException("Expected data type at index " + index);
         }
