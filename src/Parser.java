@@ -103,7 +103,7 @@ public class Parser {
     }
     public void parseValue() throws SyntaxErrorException{
         //Checks if the value is a character or a digit or a boolean value
-        if(input.charAt(index) == '\''){
+        if(input.charAt(index) == '\'' || dataType.equals("char")){
             parseCharacter();
         }else if(Character.isDigit(input.charAt(index))){
             parseDigit();
