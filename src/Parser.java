@@ -243,7 +243,7 @@ public class Parser {
         result.add(character + " : Character");
     }
     public void addBoolean(String bool){
-        result.add(bool + " : Character");
+        result.add(bool + " : Boolean Value");
     }
 
     public void addDigit(String digit) throws SyntaxErrorException{
