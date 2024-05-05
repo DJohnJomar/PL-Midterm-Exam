@@ -87,16 +87,16 @@ public class Parser {
 
     public void parseIdentifier() throws SyntaxErrorException{
         String temp = "";
+        boolean hasIdentifier = false;
         //Stores characters to temp to be stored
         while(index < input.length() && Character.isLetter(input.charAt(index)) || input.charAt(index) == '_'){
-            //If character is not a letter or an underscore, input is invalid
-            if(!(Character.isLetter(input.charAt(index)) || input.charAt(index) == '_')){
-                System.out.println("\""+temp+"\"");
-                result.clear();
-                throw new SyntaxErrorException("Expected an identifier at index " + index);
-            }
             temp += input.charAt(index);
             index++;
+            hasIdentifier = true;
+        }
+        if (!hasIdentifier) { // If no identifier is found, throw an exception
+            result.clear();
+            throw new SyntaxErrorException("Expected an identifier at index " + index);
         }
         addIdentifier(temp);
         skipForWhiteSpaces();
