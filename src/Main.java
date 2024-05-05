@@ -14,6 +14,12 @@ public class Main {
         
         while (true) {
             try {
+                System.out.println("Note: Add the correct suffixes for the number data types\n"+
+                                        "f or F for float\n" + 
+                                        "d or D for double\n" + 
+                                        "l or L for long\n" + 
+                                        "b or B for byte\n" + 
+                                        "s or S for short");
                 System.out.print("\nEnter your Java Primitive Variable Initialization/Declaration: ");
                 input = reader.readLine();
                 parser.parseStatement(input);
