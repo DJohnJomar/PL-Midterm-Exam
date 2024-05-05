@@ -129,7 +129,7 @@ public class Parser {
             checkForToken(temp);
             temp = "";//reset temp
             //Check for character within quotation marks
-            if(input.charAt(index) != '\''){
+            if(input.charAt(index) != '\'' && input.charAt(index) != ' '){
                 temp += input.charAt(index);
                 index++;
                 addCharacter(temp);
