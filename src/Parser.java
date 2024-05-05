@@ -50,6 +50,11 @@ public class Parser {
                 result.clear();
                 throw new SyntaxErrorException("Expected a semicolon at index " + index);
             }
+            // Check for empty value
+            if (valueDataType.isEmpty()) {
+                result.clear();
+                throw new SyntaxErrorException("Expected a value at index " + index);
+            }
 
         }else if(input.charAt(index) == ';'){
             temp += input.charAt(index);
@@ -59,6 +64,7 @@ public class Parser {
             result.clear();
             throw new SyntaxErrorException("Expected '=' or ';' at index " + index);
         }
+        
 
         checkDataTypeValidity();
 
@@ -142,10 +148,12 @@ public class Parser {
                 result.clear();
                 throw new SyntaxErrorException("Expected a character at index " + index);
             }
+           
         }else{
             result.clear();
             throw new SyntaxErrorException("Expected a single quotation (') mark at index " + index);
         }
+        
     }
 
     public void parseDigit() throws SyntaxErrorException{
@@ -155,9 +163,11 @@ public class Parser {
             temp += input.charAt(index);
             index++;
         }
+        
         addDigit(temp);
         this.valueDataType = identifyNumericType(temp);
         skipForWhiteSpaces();
+
     }
 
     public void parseBoolean() throws SyntaxErrorException{
@@ -177,6 +187,7 @@ public class Parser {
             throw new SyntaxErrorException("Expected a boolean value of 'True' or 'False' at index "+ index);
         }
         this.valueDataType = "Boolean";
+       
     }
 
     // Checks the input string if it matches one of the keys in the hashmap of
